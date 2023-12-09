@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
     const [state, setState] = useState<object | null>(null);
     const [count, setCount] = useState(0);
-
+    // const a = "d";
     useEffect(() => {
         if (count !== 0) {
             fetch(API_URL + "/user")
