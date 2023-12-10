@@ -22,7 +22,7 @@
 
 # debug
 .husky
-.vscode
+#.vscode
 
 npm-debug.log*
 yarn-debug.log*
