@@ -62,6 +62,7 @@ module.exports = {
         ],
         "no-unused-expressions": "off",
         "no-prototype-builtins": "off",
+        "@typescript-eslint/no-explicit-any": "warn",
 
         // REACT
         "react/jsx-uses-react": "off",
