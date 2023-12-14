@@ -4,7 +4,7 @@ import { API_URL } from "@service/endpoint";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-    const [state, setState] = useState<object | null>(null);
+    const [state, setState] = useState<any>(null);
     const [count, setCount] = useState(0);
     // const a = "d";
     useEffect(() => {
