@@ -68,12 +68,12 @@ EOF
 # Function to create deploy.sh
 create_deployh() {
 cat > deploy.sh <<EOF
-git pull
-docker-compose down
-docker-compose up -d
-docker exec $PROJECT_NAME yarn install
-docker exec $PROJECT_NAME yarn build
-docker exec $PROJECT_NAME pm2 start --only "$PROJECT_NAME-prod"
+sudo git pull
+sudo docker-compose down
+sudo docker-compose up -d
+sudo docker exec $PROJECT_NAME yarn install
+sudo docker exec $PROJECT_NAME yarn build
+sudo docker exec $PROJECT_NAME pm2 start --only "$PROJECT_NAME-prod"
 
 EOF
 }

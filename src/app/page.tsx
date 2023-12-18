@@ -24,7 +24,7 @@ export default function Home() {
                 Welcome to{" "}
                 <a
                     className="text-blue-600 hover:underline"
-                    href="https://nextjs.org"
+                    href="https://sslwireless.com/"
                 >
                     SSL
                 </a>
