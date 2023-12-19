@@ -114,10 +114,11 @@ read -p "Enter project name: " PROJECT_NAME
 # Prompt user for port number
 read -p "Enter port number for the app: " PORT
 
-# Check if the name key in package.json is "demo"
-if [ $(jq -r '.name' package.json) == "demo" ]; then
+# Check if the name key in package.json is "nextjs_setup"
+if [ $(jq -r '.name' package.json) == "nextjs_setup" ]; then
   # If it is, replace it with the new project name
   changeProjectName
+  echo "0. Change project name is $PROJECT_NAME"
 fi
 
 # Check .husky/pre-commit file exists
