@@ -10,6 +10,7 @@
         "fresh:dev": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn dev",
         "fresh:build": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn build",
         "lint": "next lint",
+        "preinstall": "bash ./check.sh",
         "postinstall": "bash ./setup.sh"
     },
     "dependencies": {
