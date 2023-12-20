@@ -111,6 +111,15 @@ NODE_VERSION=$(node -v | sed 's/v//g')
 # Check if the name key in package.json is "nextjs_setup"
 name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
 
+# Check .husky/pre-commit file exists
+if [ -e ".husky/pre-commit" ]; then
+    echo "1. .husky/pre-commit already created."
+else
+    # Create files
+    preCommitHusky
+    echo "1. DONE: .husky/pre-commit created successfully."
+fi
+
 if [ "$name" == "nextjs_setup" ]; then
     # Prompt user for project name
     read -p "Enter project name: " PROJECT_NAME
@@ -120,17 +129,10 @@ if [ "$name" == "nextjs_setup" ]; then
     
     # If it is, replace it with the new project name
     changeProjectName
-    echo "1. Change project name is $PROJECT_NAME"
+    echo "2. DONE: Change project name is $PROJECT_NAME"
 fi
 
-# Check .husky/pre-commit file exists
-if [ -e ".husky/pre-commit" ]; then
-    echo "2. .husky/pre-commit already created."
-else
-    # Create files
-    preCommitHusky
-    echo "2. DONE: .husky/pre-commit created successfully."
-fi
+
 
 # Check if Dockerfile exists
 if [ -e "Dockerfile" ]; then
