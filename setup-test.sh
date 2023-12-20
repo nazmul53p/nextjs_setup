@@ -124,42 +124,44 @@ else
 fi
 
 # Check if the name key in package.json is "nextjs_setup"
-if [ $(jq -r '.name' package.json) == "nextjs_setup" ]; then
+name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
+
+if [ "$name" == "nextjs_setup" ]; then
   # If it is, replace it with the new project name
   changeProjectName
-  echo "0. Change project name is $PROJECT_NAME"
+  echo "2. Change project name is $PROJECT_NAME"
 fi
 
 # Check if Dockerfile exists
 if [ -e "Dockerfile" ]; then
-    echo "2. Dockerfile already created."
+    echo "3. Dockerfile already created."
 else
     # Create files
     createDockerfile
-    echo "2. DONE: Dockerfile created successfully."
+    echo "3. DONE: Dockerfile created successfully."
 fi
 
 # Check if docker-compose.yml exists
 if [ -e "docker-compose.yml" ]; then
-    echo "3. docker-compose.yml already created."
+    echo "4. docker-compose.yml already created."
 else
     # Create files
     createDockerCompose
-    echo "3. DONE: docker-compose.yml created successfully."
+    echo "4. DONE: docker-compose.yml created successfully."
 fi
 
 # Check if ecosystem.config.js exists
 if [ -e "ecosystem.config.js" ]; then
-    echo "4. ecosystem.config.js already created."
+    echo "5. ecosystem.config.js already created."
 else
     createEcosystemConfig
-    echo "4. DONE: ecosystem.config.js created successfully."
+    echo "5. DONE: ecosystem.config.js created successfully."
 fi
 
 # Check if deploy.sh exists
 if [ -e "deploy.sh" ]; then
-    echo "5. deploy.sh already created."
+    echo "6. deploy.sh already created."
 else
     createDeployh
-    echo "5. DONE: deploy.sh created successfully."
+    echo "6. DONE: deploy.sh created successfully."
 fi
