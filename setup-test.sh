@@ -108,12 +108,6 @@ EOF
 # Check node version greater than or equal to 18.17
 NODE_VERSION=$(node -v | sed 's/v//g')
 
-# Prompt user for project name
-read -p "Enter project name: " PROJECT_NAME
-
-# Prompt user for port number
-read -p "Enter port number for the app: " PORT
-
 # Check .husky/pre-commit file exists
 if [ -e ".husky/pre-commit" ]; then
     echo "1. .husky/pre-commit already created."
@@ -127,9 +121,14 @@ fi
 name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
 
 if [ "$name" == "nextjs_setup" ]; then
-  # If it is, replace it with the new project name
-  changeProjectName
-  echo "2. Change project name is $PROJECT_NAME"
+    # Prompt user for project name
+    read -p "Enter project name: " PROJECT_NAME
+
+    # Prompt user for port number
+    read -p "Enter port number for the app: " PORT
+    # If it is, replace it with the new project name
+    changeProjectName
+    echo "2. Change project name is $PROJECT_NAME"
 fi
 
 # Check if Dockerfile exists
