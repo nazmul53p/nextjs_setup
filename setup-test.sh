@@ -108,15 +108,6 @@ EOF
 # Check node version greater than or equal to 18.17
 NODE_VERSION=$(node -v | sed 's/v//g')
 
-# Check .husky/pre-commit file exists
-if [ -e ".husky/pre-commit" ]; then
-    echo "1. .husky/pre-commit already created."
-else
-    # Create files
-    preCommitHusky
-    echo "1. DONE: .husky/pre-commit created successfully."
-fi
-
 # Check if the name key in package.json is "nextjs_setup"
 name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
 
@@ -126,9 +117,19 @@ if [ "$name" == "nextjs_setup" ]; then
 
     # Prompt user for port number
     read -p "Enter port number for the app: " PORT
+    
     # If it is, replace it with the new project name
     changeProjectName
-    echo "2. Change project name is $PROJECT_NAME"
+    echo "1. Change project name is $PROJECT_NAME"
+fi
+
+# Check .husky/pre-commit file exists
+if [ -e ".husky/pre-commit" ]; then
+    echo "2. .husky/pre-commit already created."
+else
+    # Create files
+    preCommitHusky
+    echo "2. DONE: .husky/pre-commit created successfully."
 fi
 
 # Check if Dockerfile exists
@@ -164,3 +165,5 @@ else
     createDeployh
     echo "6. DONE: deploy.sh created successfully."
 fi
+
+code .
