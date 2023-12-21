@@ -10,11 +10,6 @@ changeProjectName() {
     mv nextjs_setup "$PROJECT_NAME"
     cd "$PROJECT_NAME"
 
-    # delete .git folder
-    rm -rf .git
-
-    # Initialize git
-    git init
 
 }
 
