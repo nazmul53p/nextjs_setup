@@ -2,6 +2,7 @@
 
 # Change project name
 changeProjectName() {
+    husky install
     # Change package.json file name
     sed -i "s/\"name\": \"nextjs_setup\"/\"name\": \"$PROJECT_NAME\"/" package.json
 
