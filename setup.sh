@@ -15,10 +15,6 @@ changeProjectName() {
 
     # Initialize git
     git init
-    git add .
-    git commit -m "setup: basic project"
-    git branch -M main
-    git remote add origin "$REPO_LINK"
 
 }
 
@@ -120,9 +116,6 @@ name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
 if [ "$name" == "nextjs_setup" ]; then
     # Prompt user for project name
     read -p "Enter project name: " PROJECT_NAME
-
-    # Prompt user for git repo link
-    read -p "Enter git repo link: " REPO_LINK
 
     # Prompt user for port number
     read -p "Enter port number for the app: " PORT
