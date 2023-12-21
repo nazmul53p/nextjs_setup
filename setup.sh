@@ -3,11 +3,11 @@
 # Change project name
 changeProjectName() {
     # Change package.json file name
-    sed -i "s/\"name\": \"nextjs_setup\"/\"name\": \"$PROJECT_NAME\"/" package.json
+    sed -i "s/\"name\": \"nextjs_setup-demo\"/\"name\": \"$PROJECT_NAME\"/" package.json
 
     # Change Folder name
     cd ..
-    mv nextjs_setup "$PROJECT_NAME"
+    mv nextjs_setup-demo "$PROJECT_NAME"
     cd "$PROJECT_NAME"
 
 
@@ -103,12 +103,12 @@ EOF
 # Check node version greater than or equal to 18.17
 NODE_VERSION=$(node -v | sed 's/v//g')
 
-# Check if the name key in package.json is "nextjs_setup"
+# Check if the name key in package.json is "nextjs_setup-demo"
 name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
 
 
 
-if [ "$name" == "nextjs_setup" ]; then
+if [ "$name" == "nextjs_setup-demo" ]; then
     # Prompt user for project name
     read -p "Enter project name: " PROJECT_NAME
 
@@ -118,6 +118,16 @@ if [ "$name" == "nextjs_setup" ]; then
     # If it is, replace it with the new project name
     changeProjectName
     echo "2. DONE: Change project name is $PROJECT_NAME"
+fi
+
+# Check .husky/pre-commit file exists
+if [ -e ".husky/pre-commit" ]; then
+    echo "1. .husky/pre-commit already created."
+else
+    # Create files
+    preCommitHusky
+    echo "1. DONE: .husky/pre-commit created successfully."
+    code .
 fi
 
 # Check if Dockerfile exists
@@ -154,13 +164,4 @@ else
     echo "6. DONE: deploy.sh created successfully."
 fi
 
-# Check .husky/pre-commit file exists
-if [ -e ".husky/pre-commit" ]; then
-    echo "1. .husky/pre-commit already created."
-else
-    # Create files
-    preCommitHusky
-    echo "1. DONE: .husky/pre-commit created successfully."
-    code .
-fi
-
+code .
