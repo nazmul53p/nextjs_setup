@@ -15,6 +15,10 @@ changeProjectName() {
 
     # Initialize git
     git init
+    git branch -M main
+    git remote add origin "$REPO_LINK"
+    git push -u origin main
+
 }
 
 # husky init
@@ -122,6 +126,9 @@ fi
 if [ "$name" == "nextjs_setup-demo" ]; then
     # Prompt user for project name
     read -p "Enter project name: " PROJECT_NAME
+
+    # Prompt user for git repo link
+    read -p "Enter git repo link: " REPO_LINK
 
     # Prompt user for port number
     read -p "Enter port number for the app: " PORT
