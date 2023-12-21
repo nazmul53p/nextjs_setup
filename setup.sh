@@ -3,14 +3,12 @@
 # Change project name
 changeProjectName() {
     # Change package.json file name
-    sed -i "s/\"name\": \"nextjs_setup-demo\"/\"name\": \"$PROJECT_NAME\"/" package.json
+    sed -i "s/\"name\": \"nextjs_setup\"/\"name\": \"$PROJECT_NAME\"/" package.json
 
     # Change Folder name
     cd ..
-    mv nextjs_setup-demo "$PROJECT_NAME"
+    mv nextjs_setup "$PROJECT_NAME"
     cd "$PROJECT_NAME"
-
-
 }
 
 # husky init
