@@ -15,9 +15,10 @@ changeProjectName() {
 
     # Initialize git
     git init
+    git add .
+    git commit -m "setup: basic project"
     git branch -M main
     git remote add origin "$REPO_LINK"
-    git push -u origin main
 
 }
 
@@ -98,12 +99,12 @@ EOF
 # Function to create deploy.sh
 createDeployh() {
 cat > deploy.sh <<EOF
-sudo git pull
-sudo docker-compose down
-sudo docker-compose up -d
-sudo docker exec $PROJECT_NAME yarn install
-sudo docker exec $PROJECT_NAME yarn build
-sudo docker exec $PROJECT_NAME pm2 start --only "$PROJECT_NAME-prod"
+git pull
+docker-compose down
+docker-compose up -d
+docker exec $PROJECT_NAME yarn install
+docker exec $PROJECT_NAME yarn build
+docker exec $PROJECT_NAME pm2 start --only "$PROJECT_NAME-prod"
 
 EOF
 }
@@ -114,14 +115,7 @@ NODE_VERSION=$(node -v | sed 's/v//g')
 # Check if the name key in package.json is "nextjs_setup"
 name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
 
-# Check .husky/pre-commit file exists
-if [ -e ".husky/pre-commit" ]; then
-    echo "1. .husky/pre-commit already created."
-else
-    # Create files
-    preCommitHusky
-    echo "1. DONE: .husky/pre-commit created successfully."
-fi
+
 
 if [ "$name" == "nextjs_setup" ]; then
     # Prompt user for project name
@@ -138,7 +132,14 @@ if [ "$name" == "nextjs_setup" ]; then
     echo "2. DONE: Change project name is $PROJECT_NAME"
 fi
 
-
+# Check .husky/pre-commit file exists
+if [ -e ".husky/pre-commit" ]; then
+    echo "1. .husky/pre-commit already created."
+else
+    # Create files
+    preCommitHusky
+    echo "1. DONE: .husky/pre-commit created successfully."
+fi
 
 # Check if Dockerfile exists
 if [ -e "Dockerfile" ]; then
