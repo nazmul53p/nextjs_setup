@@ -3,11 +3,11 @@
 # Change project name
 changeProjectName() {
     # Change package.json file name
-    sed -i "s/\"name\": \"nextjs_setup\"/\"name\": \"$PROJECT_NAME\"/" package.json
+    sed -i "s/\"name\": \"nextjs_setup-demo\"/\"name\": \"$PROJECT_NAME\"/" package.json
 
     # Change Folder name
     cd ..
-    mv nextjs_setup "$PROJECT_NAME"
+    mv nextjs_setup-demo "$PROJECT_NAME"
     cd "$PROJECT_NAME"
 
     # delete .git folder
@@ -15,7 +15,6 @@ changeProjectName() {
 
     # Initialize git
     git init
-
 }
 
 # husky init
@@ -108,7 +107,7 @@ EOF
 # Check node version greater than or equal to 18.17
 NODE_VERSION=$(node -v | sed 's/v//g')
 
-# Check if the name key in package.json is "nextjs_setup"
+# Check if the name key in package.json is "nextjs_setup-demo"
 name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
 
 # Check .husky/pre-commit file exists
@@ -120,7 +119,7 @@ else
     echo "1. DONE: .husky/pre-commit created successfully."
 fi
 
-if [ "$name" == "nextjs_setup" ]; then
+if [ "$name" == "nextjs_setup-demo" ]; then
     # Prompt user for project name
     read -p "Enter project name: " PROJECT_NAME
 
