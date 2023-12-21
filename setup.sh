@@ -2,7 +2,6 @@
 
 # Change project name
 changeProjectName() {
-    husky install
     # Change package.json file name
     sed -i "s/\"name\": \"nextjs_setup\"/\"name\": \"$PROJECT_NAME\"/" package.json
 
@@ -121,15 +120,6 @@ if [ "$name" == "nextjs_setup" ]; then
     echo "2. DONE: Change project name is $PROJECT_NAME"
 fi
 
-# Check .husky/pre-commit file exists
-if [ -e ".husky/pre-commit" ]; then
-    echo "1. .husky/pre-commit already created."
-else
-    # Create files
-    preCommitHusky
-    echo "1. DONE: .husky/pre-commit created successfully."
-fi
-
 # Check if Dockerfile exists
 if [ -e "Dockerfile" ]; then
     echo "3. Dockerfile already created."
@@ -164,4 +154,13 @@ else
     echo "6. DONE: deploy.sh created successfully."
 fi
 
-code .
+# Check .husky/pre-commit file exists
+if [ -e ".husky/pre-commit" ]; then
+    echo "1. .husky/pre-commit already created."
+else
+    # Create files
+    preCommitHusky
+    echo "1. DONE: .husky/pre-commit created successfully."
+    code .
+fi
+
