@@ -9,6 +9,7 @@ changeProjectName() {
     cd ..
     mv nextjs_setup "$PROJECT_NAME"
     cd "$PROJECT_NAME"
+    
 }
 
 # husky init
@@ -101,12 +102,12 @@ EOF
 # Check node version greater than or equal to 18.17
 NODE_VERSION=$(node -v | sed 's/v//g')
 
-# Check if the name key in package.json is "nextjs_setup-demo"
+# Check if the name key in package.json is "nextjs_setup"
 name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
 
 
 
-if [ "$name" == "nextjs_setup-demo" ]; then
+if [ "$name" == "nextjs_setup" ]; then
     # Prompt user for project name
     read -p "Enter project name: " PROJECT_NAME
 
@@ -125,7 +126,6 @@ else
     # Create files
     preCommitHusky
     echo "1. DONE: .husky/pre-commit created successfully."
-    code .
 fi
 
 # Check if Dockerfile exists
@@ -161,5 +161,3 @@ else
     createDeployh
     echo "6. DONE: deploy.sh created successfully."
 fi
-
-code .
