@@ -7,11 +7,12 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "fresh:dev": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn dev",
-        "fresh:build": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn build",
         "lint": "next lint",
-        "preinstall": "bash ./check.sh",
-        "postinstall": "bash ./setup.sh"
+        "preinstall": "bash ./sh/check.sh",
+        "postinstall": "bash ./sh/setup.sh",
+        "husky:init": "bash ./sh/husky.sh",
+        "fresh:dev": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn dev",
+        "fresh:build": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn build"
     },
     "dependencies": {
         "next": "14.0.3",
