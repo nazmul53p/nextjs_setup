@@ -1,6 +1,6 @@
 {
     "name": "nextjs_setup",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "private": true,
     "license": "The MIT License (MIT)",
     "scripts": {
@@ -15,9 +15,14 @@
         "fresh:build": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn build"
     },
     "dependencies": {
+        "@reduxjs/toolkit": "^2.0.1",
+        "dayjs": "^1.11.10",
         "next": "14.0.3",
         "react": "^18",
-        "react-dom": "^18"
+        "react-dom": "^18",
+        "react-hook": "^0.0.1",
+        "react-redux": "^9.0.4",
+        "zod": "^3.22.4"
     },
     "devDependencies": {
         "@types/node": "^20",

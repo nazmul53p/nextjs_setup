@@ -23,6 +23,7 @@
             "@utils/*": ["./src/app/lib/utils/*"],
             "@service/*": ["./src/app/lib/service/*"],
             "@hook/*": ["./src/app/lib/hook/*"],
+            "@redux/*": ["./src/app/lib/redux/*"],
             "@public/*": ["./public/*"]
         }
     },
