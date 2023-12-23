@@ -28,7 +28,7 @@ Technologies used: <br/>
 
 # Installation
 
-At first clone the github repository to your local machine.
+At first clone the repository to your local machine.
 
 ```
 git clone https://github.com/nazmul53p/nextjs_setup
