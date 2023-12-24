@@ -1,40 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IDemo } from "./demoApi";
 
-const initialState = {
-    user: null,
-    modalType: "",
-    modal: false,
-    isForgetPassword: false,
+const initialState: IDemo = {
+    id: 1,
+    name: "",
+    username: "",
+    email: "",
+    address: {
+        street: "",
+        suite: "",
+        city: "",
+        zipcode: "",
+        geo: { lat: "", lng: "" },
+    },
+    phone: "",
+    website: "",
+    company: {
+        name: "",
+        catchPhrase: "",
+        bs: "",
+    },
 };
 
 export const demoSlice = createSlice({
     name: "demoSlice",
     initialState,
     reducers: {
-        logout: () => initialState,
-        userInfo: (state, action) => {
-            state.user = action.payload;
-        },
-
-        userModalType: (state, action) => {
-            state.modalType = action.payload;
-        },
-        isModalOpen: (state, action) => {
-            state.modal = action.payload;
-        },
-        setIsForgotPassword: (state, action) => {
-            state.isForgetPassword = action.payload;
+        getDemo: (state, action: PayloadAction<IDemo>) => {
+            state = action.payload;
         },
     },
 });
 
-export const {
-    logout,
-    userInfo,
-    userModalType,
-    isModalOpen,
-    setIsForgotPassword,
-} = demoSlice.actions;
+export const { getDemo } = demoSlice.actions;
 
-// Export the authSlice.reducer to be included in the store.
-export const { reducer: demoReducer } = demoSlice;
+export default demoSlice.reducer;

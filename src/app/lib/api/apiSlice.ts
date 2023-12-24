@@ -1,16 +1,22 @@
+import { TRootState } from "@redux/index";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Cookie from "@utils/index";
 import { BASE_URL } from "./endpoint";
+import providesTags from "./providesTags";
 
-const mainServiceApi = createApi({
-    // reducerPath: "api",
+const apiSlice = createApi({
+    reducerPath: "api",
     // refetchOnMountOrArgChange: true,
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL,
-        prepareHeaders: async headers => {
-            // const token = getState()?.user?.token;
-            const token = Cookie.getCookie("token");
+        prepareHeaders: async (headers, { getState, endpoint }) => {
+            console.log("endpoint", endpoint);
+            console.log("getState", getState() as TRootState);
+
+            // const token = (getState() as RootState).auth.token;
             // headers.set("Access-Control-Allow-Origin", "*");
+
+            const token = Cookie.getCookie("token");
 
             if (token) {
                 headers.set("Authorization", "Bearer " + token);
@@ -26,9 +32,9 @@ const mainServiceApi = createApi({
         },
     }),
 
-    tagTypes: [],
+    tagTypes: providesTags,
 
     endpoints: () => ({}),
 });
 
-export default mainServiceApi;
+export default apiSlice;

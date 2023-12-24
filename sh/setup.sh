@@ -100,7 +100,7 @@ name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-if [[ "$current_branch" == "main" || "$current_branch" == "master" || "$current_branch" == "dev_nazmul" || "$current_branch" == "dev_raad" ]]; then
+if [[ "$current_branch" == "dev_nazmul" || "$current_branch" == "dev_raad" ]]; then
     exit 0
 fi
 
