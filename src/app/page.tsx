@@ -2,13 +2,7 @@
 The route "/" is the default route and it renders this pages.
 This page is rendered by default client side.  */
 
-"use client";
-
-import { useGetDemoQuery } from "@redux/demo/demoApi";
-
 export default function Home() {
-    const { data, isLoading } = useGetDemoQuery();
-    console.log(data, isLoading);
     return (
         <main className="flex min-h-screen flex-col items-center p-24">
             <h1 className="text-center text-6xl font-bold">

@@ -32,14 +32,14 @@ export interface IDemo {
 
 export const authApi = apiSlice.injectEndpoints({
     endpoints: builder => ({
-        getDemo: builder.query<IDemo, void>({
+        getDemos: builder.query<IDemo, void>({
             query: () => GET_USERS_DATA,
             transformResponse: (response: unknown) => {
                 return response as Promise<IDemo>;
             },
             providesTags: ["demo"],
         }),
-        getById: builder.query<IDemo, number>({
+        getDemo: builder.query<IDemo, number>({
             query: id => `demo/${id}`,
             transformResponse: (response: unknown) => {
                 return response as Promise<IDemo>;
@@ -83,7 +83,7 @@ export const authApi = apiSlice.injectEndpoints({
 
 export const {
     useGetDemoQuery,
-    useGetByIdQuery,
+    useGetDemosQuery,
     useCreateDemoMutation,
     useUpdateDemoMutation,
     useDeleteDemoMutation,
