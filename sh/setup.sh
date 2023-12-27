@@ -98,7 +98,11 @@ NODE_VERSION=$(node -v | sed 's/v//g')
 # Check if the name key in package.json is "nextjs_setup"
 name=$(cat package.json | grep '"name"' | cut -d'"' -f4)
 
+# current_branch=$(git rev-parse --abbrev-ref HEAD)
 
+# if [[ "$current_branch" == "dev_nazmul" || "$current_branch" == "dev_raad" ]]; then
+#     exit 0
+# fi
 
 if [ "$name" == "nextjs_setup" ]; then
     # Prompt user for project name
@@ -160,3 +164,7 @@ else
     yarn husky:init
     # echo "6. DONE: .husky/pre-commit created successfully."
 fi
+
+
+
+

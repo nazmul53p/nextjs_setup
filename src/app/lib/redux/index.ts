@@ -1,3 +1,4 @@
+import apiSlice from "@api/apiSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import {
     TypedUseSelectorHook,
@@ -5,23 +6,30 @@ import {
     useSelector,
     useStore,
 } from "react-redux";
-import { demoReducer } from "./demo/demoSlice";
+import authSlice from "./auth/authSlice";
+import demoSlice from "./demo/demoSlice";
 
 export const store = configureStore({
-    devTools: process.env.NEXT_PUBLIC_NODE_ENV === "development",
     reducer: {
-        demo: demoReducer,
+        [apiSlice.reducerPath]: apiSlice.reducer,
+        auth: authSlice,
+        demo: demoSlice,
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware({}).concat([]),
+
+    devTools: process.env.NODE_ENV === "development",
+
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware({}).concat(apiSlice.middleware),
 });
 
 // Infer the type of makeStore
-export type AppStore = typeof store;
+export type TAppStore = typeof store;
+
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<AppStore["getState"]>;
-export type AppDispatch = AppStore["dispatch"];
+export type TRootState = ReturnType<TAppStore["getState"]>;
+export type TAppDispatch = TAppStore["dispatch"];
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
-export const useAppDispatch: () => AppDispatch = useDispatch;
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-export const useAppStore: () => AppStore = useStore;
+export const useAppDispatch: () => TAppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<TRootState> = useSelector;
+export const useAppStore: () => TAppStore = useStore;
