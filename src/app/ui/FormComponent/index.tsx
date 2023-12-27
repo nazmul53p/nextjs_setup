@@ -15,6 +15,8 @@ interface IFormInput {
     age: number;
     date: Date;
     mobile: string;
+    password: string;
+    confirmpassword: string;
     formState: {
         errors: {
             name: {
@@ -35,6 +37,12 @@ interface IFormInput {
             mobile: {
                 message: string;
             };
+            password: {
+                message: string;
+            };
+            confirmpassword: {
+                message: string;
+            };
         };
     };
 }
@@ -46,19 +54,20 @@ const FormComponent = () => {
         formState: { errors },
     } = useForm<IFormInput>();
 
-    console.log("errors", errors);
-
     const onSubmit: SubmitHandler<IFormInput> = data => {
         console.log(data);
     };
 
     return (
         <div className="min-h-screen items-center bg-blue-100 p-24">
-            <div className="flex justify-center text-3xl">Example Form</div>
+            <div className="flex justify-center pb-10 text-3xl">
+                Example Form
+            </div>
 
             <form className="w-full max-w-lg" onSubmit={handleSubmit(onSubmit)}>
+                {/* Row 1 */}
                 <div className="-mx-3 mb-2 flex flex-wrap">
-                    {/* First Name - Input Field */}
+                    {/* Name - Input Field */}
                     <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
                         <label
                             className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
@@ -82,7 +91,7 @@ const FormComponent = () => {
                             {errors?.name?.message}
                         </p>
                     </div>
-                    {/* Email - Input Field */}
+                    {/* Email - Input Field - Email Validation*/}
                     <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
                         <label
                             className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
@@ -93,6 +102,10 @@ const FormComponent = () => {
                         <input
                             {...register("email", {
                                 required: "Please type email.",
+                                pattern: {
+                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                    message: "invalid email address",
+                                },
                             })}
                             className={`${
                                 errors?.email
@@ -144,8 +157,9 @@ const FormComponent = () => {
                         </div>
                     </div>
                 </div>
+                {/* Row 2 */}
                 <div className="-mx-3 mb-2 flex flex-wrap">
-                    {/* Age - Input Field - Only Accept Numbers 18 to 180 */}
+                    {/* Age - Number Field - Only Accept Numbers 18 to 160 */}
                     <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
                         <label
                             className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
@@ -156,6 +170,15 @@ const FormComponent = () => {
                         <input
                             {...register("age", {
                                 required: "Please type age.",
+                                min: {
+                                    value: 18,
+                                    message:
+                                        "You have to be 18 years or older.",
+                                },
+                                max: {
+                                    value: 160,
+                                    message: "You are dead.",
+                                },
                             })}
                             className={`${
                                 errors?.age
@@ -164,7 +187,7 @@ const FormComponent = () => {
                             } mb-3 block w-full appearance-none rounded border bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:bg-white focus:outline-none`}
                             id="grid-last-name"
                             placeholder="Age"
-                            type="text"
+                            type="number"
                         />
                         <p className="text-xs italic text-red-500">
                             {errors?.age?.message}
@@ -189,7 +212,7 @@ const FormComponent = () => {
                             } mb-3 block w-full appearance-none rounded border bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:bg-white focus:outline-none`}
                             id="grid-last-name"
                             placeholder="Date"
-                            type="text"
+                            type="date"
                         />
                         <p className="text-xs italic text-red-500">
                             {errors?.date?.message}
@@ -206,6 +229,11 @@ const FormComponent = () => {
                         <input
                             {...register("mobile", {
                                 required: "Please type mobile number.",
+                                pattern: {
+                                    value: /(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/,
+                                    message:
+                                        "Invalid Bangladeshi mobile number",
+                                },
                             })}
                             className={`${
                                 errors?.date
@@ -221,8 +249,9 @@ const FormComponent = () => {
                         </p>
                     </div>
                 </div>
+                {/* Row 3 */}
                 <div className="-mx-3 mb-2 flex flex-wrap">
-                    <div className="w-full px-3">
+                    <div className="mb-6 w-full px-3 md:mb-0 md:w-1/2">
                         <label
                             className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
                             htmlFor="grid-password"
@@ -230,20 +259,60 @@ const FormComponent = () => {
                             Password
                         </label>
                         <input
-                            className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
+                            {...register("password", {
+                                required: "Please type password.",
+                                // validate: validatePassword,
+                            })}
+                            className={`${
+                                errors?.password
+                                    ? "border-red-500"
+                                    : "border-gray-200"
+                            } mb-3 block w-full appearance-none rounded border bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:bg-white focus:outline-none`}
                             id="grid-password"
-                            placeholder="******************"
+                            placeholder="*******"
                             type="password"
                         />
-                        <p className="text-xs italic text-gray-600">
-                            Make it as long and as crazy as you&apos;d like
+                        <p className="text-xs italic text-red-500">
+                            {errors?.password?.message}
+                        </p>
+                    </div>
+                    <div className="mb-6 w-full px-3 md:mb-0 md:w-1/2">
+                        <label
+                            className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
+                            htmlFor="grid-password"
+                        >
+                            Confirm Password
+                        </label>
+                        <input
+                            {...register("password", {
+                                required: "Please type password.",
+                                // validate: () => {
+                                //     if (
+                                //         passwordWatch === confirmpasswordWatch
+                                //     ) {
+                                //         return true;
+                                //     }
+                                //     return "Password and confirm password does not match";
+                                // },
+                            })}
+                            className={`${
+                                errors?.confirmpassword
+                                    ? "border-red-500"
+                                    : "border-gray-200"
+                            } mb-3 block w-full appearance-none rounded border bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:bg-white focus:outline-none`}
+                            id="grid-password"
+                            placeholder="*******"
+                            type="password"
+                        />
+                        <p className="text-xs italic text-red-500">
+                            {errors?.confirmpassword?.message}
                         </p>
                     </div>
                 </div>
                 <div className="-mx-3 mb-2 flex flex flex-wrap justify-center">
                     <button
                         className="mb-2 me-2 rounded-lg bg-gradient-to-r from-teal-200 to-lime-200 px-5 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:outline-none focus:ring-4 focus:ring-lime-200 dark:focus:ring-teal-700"
-                        type="button"
+                        type="submit"
                     >
                         Submit
                     </button>
