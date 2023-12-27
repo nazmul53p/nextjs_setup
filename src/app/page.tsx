@@ -2,7 +2,7 @@
 The route "/" is the default route and it renders this pages.
 This page is rendered by default client side.  */
 
-export default function Home() {
+const Home = () => {
     return (
         <main className="flex min-h-screen flex-col items-center bg-blue-100 p-24">
             <h1 className="text-center text-5xl font-bold">
@@ -35,4 +35,6 @@ export default function Home() {
             </span>
         </main>
     );
-}
+};
+
+export default Home;
