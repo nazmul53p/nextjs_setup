@@ -1,7 +1,7 @@
 # Introduction
 
-React Boilerplate - Bootstrap a new React web applications without any hassle.<br/>
-Check out the complete documentation [HERE](https://sslwireless.com).<br/>
+React Project Starter Framework - Bootstrap a new React web applications without any hassle.<br/>
+Check out the complete documentation [HERE](https://github.com/nazmul53p/nextjs_setup/blob/main/README.md).<br/>
 
 Technologies used: <br/>
 [React.js](https://react.dev/learn) |
@@ -25,6 +25,7 @@ Technologies used: <br/>
 4. Docker should be installed in your machine. [Docker for Windows](https://docs.docker.com/desktop/install/windows-install) | [Docker for Linux](https://docs.docker.com/desktop/install/linux-install) | [Docker for Mac](https://docs.docker.com/desktop/install/mac-install)
 5. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) should be installed and configured correctly.
 6. [Yarn](https://yarnpkg.com) should be installed. [Install Guide](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+7. These VSCode extensions should be installed: [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) | [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) | [Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost)
 
 # Installation
 
@@ -41,13 +42,19 @@ Name: test_project
 Port: 3000
 ```
 
+Open the project directory in your terminal
+
+```
+cd test_project
+```
+
 Open the application with your code editor. It is good to use VSCode.
 
-To run the application go to project directory and enter these commands serially
+To run the application enter this command
 
 ```
 yarn dev
 ```
 
-Your project is now ready! You can view the starting page at localhost:{THE_PORT_YOU_GIVEN}
+Your project is now ready! You can view the starting page at localhost:THE_PORT_YOU_GIVEN
 If the port you entered during setup is not free, it will open in the next port.
