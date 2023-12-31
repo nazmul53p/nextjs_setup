@@ -8,6 +8,8 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
+        "preinstall": "bash ./sh/check.sh",
+        "postinstall": "bash ./sh/setup.sh",
         "husky:init": "bash ./sh/husky.sh",
         "fresh:dev": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn dev",
         "fresh:build": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn build"

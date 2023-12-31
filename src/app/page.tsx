@@ -11,7 +11,7 @@ const Home = () => {
             <span className="pt-10">
                 <a
                     className="text-blue-600 hover:underline"
-                    href="https://sslwireless.com/"
+                    href="https://github.com/nazmul53p/nextjs_setup/blob/main/README.md"
                     target="_blank"
                 >
                     Documentation
@@ -19,7 +19,7 @@ const Home = () => {
                 {" | "}
                 <a
                     className="text-blue-600 hover:underline"
-                    href="https://sslwireless.com/"
+                    href="https://github.com/nazmul53p/nextjs_setup"
                     target="_blank"
                 >
                     Repository
@@ -27,7 +27,7 @@ const Home = () => {
                 {" | "}
                 <a
                     className="text-blue-600 hover:underline"
-                    href="https://sslwireless.com/"
+                    href="https://www.npmjs.com/package/@nazmul53p/nextjs_setup"
                     target="_blank"
                 >
                     NPM Package
