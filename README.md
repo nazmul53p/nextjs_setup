@@ -28,15 +28,26 @@ Technologies used: <br/>
 
 # Installation
 
-At first clone the repository to your local machine.
+At first install the framework directly from NPM Package Manager
 
 ```
-git clone https://github.com/nazmul53p/nextjs_setup
+npx @nazmul53p/nextjs_setup
 ```
+
+When prompted write your project name and port to display the application
+
+```
+Name: test_project
+Port: 3000
+```
+
+Open the application with your code editor. It is good to use VSCode.
 
 To run the application go to project directory and enter these commands serially
 
 ```
-yarn
 yarn dev
 ```
+
+Your project is now ready! You can view the starting page at localhost:{THE_PORT_YOU_GIVEN}
+If the port you entered during setup is not free, it will open in the next port.
