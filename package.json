@@ -15,12 +15,14 @@
         "fresh:build": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn build"
     },
     "dependencies": {
+        "@hookform/resolvers": "^3.3.3",
         "@reduxjs/toolkit": "^2.0.1",
         "dayjs": "^1.11.10",
         "next": "14.0.3",
         "react": "^18",
         "react-dom": "^18",
         "react-hook": "^0.0.1",
+        "react-hook-form": "^7.49.2",
         "react-redux": "^9.0.4",
         "zod": "^3.22.4"
     },
