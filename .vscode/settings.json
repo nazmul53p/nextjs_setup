@@ -1,6 +1,5 @@
 {
     "editor.fontLigatures": true,
-    "editor.fontSize": 18,
     "editor.fontWeight": 400,
     "editor.tabSize": 4,
     "editor.wordWrap": "wordWrapColumn",
@@ -12,7 +11,6 @@
     "liveServer.settings.donotVerifyTags": true,
     "liveServer.settings.donotShowInfoMsg": true,
     "terminal.integrated.fontFamily": "MonoLisa",
-    "terminal.integrated.fontSize": 14,
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
@@ -85,7 +83,6 @@
     "explorer.confirmDelete": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "redhat.telemetry.enabled": true,
-    "window.zoomLevel": -1,
     "files.associations": {
         "Dockerfile": "dockerfile",
         "*.css": "tailwindcss"
