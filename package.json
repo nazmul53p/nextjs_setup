@@ -8,6 +8,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
+        "husky:staged": "npx husky add .husky/pre-commit 'npx lint-staged'",
         "fresh:dev": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn dev",
         "fresh:build": "rm -rf node_modules && rm -rf .next && yarn cache clean && yarn install && yarn build"
     },
