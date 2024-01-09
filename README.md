@@ -32,14 +32,13 @@ Technologies used: <br/>
 At first install the framework directly from NPM Package Manager
 
 ```
-npx @nazmul53p/nextjs_setup
+npx @nazmul53p/quick-setup
 ```
 
 When prompted write your project name and port to display the application
 
 ```
 Name: test_project
-Port: 3000
 ```
 
 Open the project directory in your terminal
@@ -56,5 +55,6 @@ To run the application enter this command
 yarn dev
 ```
 
-Your project is now ready! You can view the starting page at localhost:THE_PORT_YOU_GIVEN
-If the port you entered during setup is not free, it will open in the next port.
+Your project is now ready!
+
+Default port 3000 will be used. If it is not free then the next port will be used.
